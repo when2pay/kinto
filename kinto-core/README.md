@@ -2,15 +2,15 @@
 
 ## Our KYC
 
-0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe
+0x6842E96753155446450A9597A482d446D15d5c30
 
 1. `source .env && forge create ./src/ETHBangkok/KYCApplication.sol:KYCApplication --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY --constructor-args "0x2880aB155794e7179c9eE2e38200202908C17B43"`
-2. `forge verify-contract --watch 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe src/ETHBangkok/KYCApplication.sol:KYCApplication   --verifier blockscout --verifier-url https://explorer.kinto.xyz/api`
-3. `cast send 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe "getChallenge()" --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
-4. Read the challenge `cast call 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe "challenges(address)(uint256)" 0x7A8E79dE63c29c3ee2375Cd3D2e90FEaA5aAf322 --rpc-url $KINTO_RPC_URL`
-5. Add public key `cast send 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe "addKey((uint256,uint256))" "(2753,3233)" --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
-6. Check signature and apply for KYC `cast send 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe "addApplication(uint256,uint256)" 56 1794 --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
-7. Get application status `cast call 0xF1a73A2B87449C1EB2BBEeC1628DEf7Cca039cAe "applications(address)(uint256)" 0x7A8E79dE63c29c3ee2375Cd3D2e90FEaA5aAf322 --rpc-url $KINTO_RPC_URL`
+2. `forge verify-contract --watch 0x6842E96753155446450A9597A482d446D15d5c30 src/ETHBangkok/KYCApplication.sol:KYCApplication   --verifier blockscout --verifier-url https://explorer.kinto.xyz/api`
+3. `cast send 0x6842E96753155446450A9597A482d446D15d5c30 "getChallenge()" --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
+4. Read the challenge `cast call 0x6842E96753155446450A9597A482d446D15d5c30 "challenges(address)(uint256)" 0x7A8E79dE63c29c3ee2375Cd3D2e90FEaA5aAf322 --rpc-url $KINTO_RPC_URL`
+5. Add public key `cast send 0x6842E96753155446450A9597A482d446D15d5c30 "addKey((uint256,uint256))" "(2753,3233)" --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
+6. Check signature and apply for KYC `cast send 0x6842E96753155446450A9597A482d446D15d5c30 "addApplication(uint256,uint256)" 56 1794 --rpc-url $KINTO_RPC_URL --private-key $PRIVATE_KEY`
+7. Get application status `cast call 0x6842E96753155446450A9597A482d446D15d5c30 "applications(address)(uint256)" 0x7A8E79dE63c29c3ee2375Cd3D2e90FEaA5aAf322 --rpc-url $KINTO_RPC_URL`
 
 ### Read using Blockscout
 

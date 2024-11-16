@@ -162,6 +162,10 @@ contract KYCApplication {
         challenges[msg.sender] = mapRandomNumber(0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef,1,100);
     }
 
+    function reset() public {
+        applications[msg.sender] = false;
+    }
+
     IEntropy public entropy;
     address public entropyProvider;
 

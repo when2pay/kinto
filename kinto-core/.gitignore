@@ -1,0 +1,28 @@
+# Compiler files
+cache/
+out/
+bin
+
+# Ignores development broadcast logs
+/broadcast/deploy.sol
+
+# Dotenv file
+.env
+hf.env
+
+# node
+node_modules/
+out/
+
+# addresses.json on local testnet
+/test/artifacts/31337/addresses.json
+
+# Certora
+.certora_internal/*
+certora/munged/*
+
+# Ignore local chain
+**/31337/**
+
+
+jupyter/.ipynb_checkpoints/

@@ -38,7 +38,10 @@ remappings = [
 
     '@alto/=node_modules/alto/contracts/',
 
-    'permit2/=node_modules/permit2/'
+    'permit2/=node_modules/permit2/',
+
+    '@pythnetwork/pyth-sdk-solidity/=node_modules/@pythnetwork/pyth-sdk-solidity/',
+    '@pythnetwork/entropy-sdk-solidity/=node_modules/@pythnetwork/entropy-sdk-solidity/'
 ]
 
 

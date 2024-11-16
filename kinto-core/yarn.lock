@@ -893,12 +893,12 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.8.3.tgz#cbef3146bfc570849405f59cba18235da95a252a"
   integrity sha512-bQHV8R9Me8IaJoJ2vPG4rXcL7seB7YVuskr4f+f5RyOStSZetwzkWtoqDMl5erkBJy0lDRUnIR2WIkPiC0GJlg==
 
-"@openzeppelin/contracts@^4.2.0":
+"@openzeppelin/contracts@^4.2.0", "openzeppelin-contracts@npm:@openzeppelin/contracts@v4.9.6":
   version "4.9.6"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.9.6.tgz#2a880a24eb19b4f8b25adc2a5095f2aa27f39677"
   integrity sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA==
 
-"@openzeppelin/contracts@^5.0.0":
+"@openzeppelin/contracts@^5.0.0", "openzeppelin-contracts-5.0.1@npm:@openzeppelin/contracts@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-5.0.2.tgz#b1d03075e49290d06570b2fd42154d76c2a5d210"
   integrity sha512-ytPc6eLGcHHnapAZ9S+5qsdomhjo6QBHTDRRBFfTxXIpsicMhVPouPgmUPebZZZGX7vt9USA+Z+0M0dSVtSUEA==
@@ -1014,6 +1014,16 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
+
+"@pythnetwork/entropy-sdk-solidity@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@pythnetwork/entropy-sdk-solidity/-/entropy-sdk-solidity-1.5.0.tgz#fcb2d4ee9124b0de4a7ceb386779ca50d5a61f18"
+  integrity sha512-ZZti5BLURe4w0HtCwy2qGJayOtAcWjjfpnUsar6fHZPG2SkC3jfj13m9WBJKLk87T1ZaSpazAdb22pm6MXG8qg==
+
+"@pythnetwork/pyth-sdk-solidity@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@pythnetwork/pyth-sdk-solidity/-/pyth-sdk-solidity-4.0.0.tgz#166aeef316bf8ec6c21d97e6e9ba0de96c0fd270"
+  integrity sha512-Cy2MvSN1Oh5YpIYmZd2In6/gfXbGjnpazmXKioTuq07Drp4Rl2XHcvtqHdgilplCl32IG4pU+XoRafpexID08A==
 
 "@scure/base@~1.1.6":
   version "1.1.7"
@@ -3425,11 +3435,6 @@ opentelemetry-instrumentation-fetch-node@^1.1.2:
     "@opentelemetry/instrumentation" "^0.46.0"
     "@opentelemetry/semantic-conventions" "^1.17.0"
 
-"openzeppelin-contracts-5.0.1@npm:@openzeppelin/contracts@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-5.0.2.tgz#b1d03075e49290d06570b2fd42154d76c2a5d210"
-  integrity sha512-ytPc6eLGcHHnapAZ9S+5qsdomhjo6QBHTDRRBFfTxXIpsicMhVPouPgmUPebZZZGX7vt9USA+Z+0M0dSVtSUEA==
-
 "openzeppelin-contracts-upgradeable-5.0.1@npm:@openzeppelin/contracts-upgradeable@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-5.0.2.tgz#3e5321a2ecdd0b206064356798c21225b6ec7105"
@@ -3439,11 +3444,6 @@ opentelemetry-instrumentation-fetch-node@^1.1.2:
   version "4.9.6"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-4.9.6.tgz#38b21708a719da647de4bb0e4802ee235a0d24df"
   integrity sha512-m4iHazOsOCv1DgM7eD7GupTJ+NFVujRZt1wzddDPSVGpWdKq1SKkla5htKG7+IS4d2XOCtzkUNwRZ7Vq5aEUMA==
-
-"openzeppelin-contracts@npm:@openzeppelin/contracts@v4.9.6":
-  version "4.9.6"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.9.6.tgz#2a880a24eb19b4f8b25adc2a5095f2aa27f39677"
-  integrity sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA==
 
 optionator@^0.8.1:
   version "0.8.3"

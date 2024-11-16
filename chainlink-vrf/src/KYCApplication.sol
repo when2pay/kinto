@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.23;
 
-import { IEntropyConsumer } from "@pythnetwork/entropy-sdk-solidity/IEntropyConsumer.sol";
-import { IEntropy } from "@pythnetwork/entropy-sdk-solidity/IEntropy.sol";
+import {VRFConsumerBaseV2Plus} from '@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol';
+import {VRFV2PlusClient} from '@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol';
+import {IERC20} from '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
-contract KYCApplication {
+contract KYCApplication is VRFConsumerBaseV2Plus {
     // Structs
     struct Key {
         uint256 exponent;
@@ -16,13 +17,25 @@ contract KYCApplication {
     mapping(address => bool) public applications; // KYC applications status
     mapping(address => uint256) public challenges; // Random challenges
 
-    IEntropy public entropy; // Entropy contract instance
-    address public entropyProvider; // Entropy provider address
+    bytes32 public keyHash;
+    uint32 public callbackGasLimit = 2_500_000;
+    uint16 public requestConfirmations = 3;
+    uint32 public numWords = 1;
+    uint256 public s_subscriptionId;
+    uint256 public lastRequestId;
+
+    // Contract owner
+    address public owner;
+
+    // Events
+    event RequestSent(uint256 requestId, uint32 numWords);
+    event RequestFulfilled(uint256 requestId, uint256[] randomWords);
 
     // Constructor
-    constructor(address entropyAddress) {
-        entropy = IEntropy(entropyAddress);
-        // entropyProvider = entropy.getDefaultProvider();
+    constructor(uint256 _subscriptionId, bytes32 _keyHash) VRFConsumerBaseV2Plus(0x5CE8D5A2BC84beb22a398CCA51996F7930313D61) {
+        s_subscriptionId = _subscriptionId;
+        keyHash = _keyHash;
+        owner = msg.sender;
     }
 
     // Key Management
@@ -41,40 +54,32 @@ contract KYCApplication {
     }
 
     // Random Challenges
-    function getChallenge() public {
-        challenges[msg.sender] = mapRandomNumber(
-            0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef,
-            1,
-            100
+    function requestChallenge() public {
+        // Request a random number from Chainlink VRF
+        lastRequestId = _vrfRequest();
+        emit RequestSent(lastRequestId, numWords);
+    }
+
+    // Chainlink VRF Callback
+    function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
+        require(_requestId == lastRequestId, "Invalid request ID");
+        challenges[msg.sender] = (_randomWords[0] % 100) + 1; // Random number between 1 and 100
+        emit RequestFulfilled(_requestId, _randomWords);
+    }
+
+    // VRF Request
+    function _vrfRequest() private returns (uint256 _requestId) {
+        _requestId = s_vrfCoordinator.requestRandomWords(
+            VRFV2PlusClient.RandomWordsRequest({
+                keyHash: keyHash,
+                subId: s_subscriptionId,
+                requestConfirmations: requestConfirmations,
+                callbackGasLimit: callbackGasLimit,
+                numWords: numWords,
+                extraArgs: VRFV2PlusClient._argsToBytes(VRFV2PlusClient.ExtraArgsV1({nativePayment: false}))
+            })
         );
-    }
-
-    function mapRandomNumber(
-        bytes32 randomNumber,
-        uint256 minRange,
-        uint256 maxRange
-    ) internal pure returns (uint256) {
-        uint256 range = uint256(maxRange - minRange + 1);
-        return minRange + (uint256(randomNumber) % range);
-    }
-
-    // Random Number Request
-    function requestRandomNumber(bytes32 userRandomNumber) external payable {
-        uint256 fee = entropy.getFee(entropyProvider);
-        entropy.requestWithCallback{ value: fee }(entropyProvider, userRandomNumber);
-    }
-
-    // Entropy Callback
-    function entropyCallback(
-        uint64 sequenceNumber,
-        address provider,
-        bytes32 randomNumber
-    ) internal {
-        // Implement your callback logic here
-    }
-
-    function getEntropy() internal view returns (address) {
-        return address(entropy);
+        return _requestId;
     }
 
     // RSA Keypair Generation

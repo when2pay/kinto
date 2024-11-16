@@ -1,0 +1,6 @@
+[submodule "flow/lib/forge-std"]
+	path = flow/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "chainlink-vrf/lib/forge-std"]
+	path = chainlink-vrf/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
